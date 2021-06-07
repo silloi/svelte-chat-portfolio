@@ -5,14 +5,14 @@
 </script>
 
 <nav class="flex justify-around items-center h-16 px-4 border-t-2">
-	<button type="button">
+	<a href="/">
 		<User32 />
-	</button>
+	</a>
 
-	<button type="button">
+	<a href="/talks">
 		<AlignBoxTopLeft32 />
-	</button>
-	
+	</a>
+
 	<button type="button">
 		<Link32 />
 	</button>

@@ -6,7 +6,7 @@
 	export let search = '';
 	export let talkList = [];
 	
-	let talkIndex = '';
+	export let talkIndex = '';
 </script>
 
 <div class="flex flex-col h-screen">

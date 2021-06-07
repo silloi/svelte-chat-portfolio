@@ -1,3 +1,30 @@
+<script context="module">
+	/**
+	 * @type {import('@sveltejs/kit').Load}
+	 */
+	export async function load({ page, fetch }) {
+		const url = `https://silloi.microcms.io/api/v1/talks`;
+		const resList = await fetch(url, {
+			headers: {
+				'X-API-KEY': import.meta.env['VITE_X-API-KEY'],
+			},
+		});
+
+		if (resList.ok) {
+			return {
+				props: {
+					data: await resList.json()
+				},
+			};
+		}
+
+		return {
+			status: resList.status,
+			error: new Error(`Could not load ${url}`)
+		};
+	};
+</script>
+
 <script>	
 	import TalkList from '$lib/TalkList/index.svelte';
 	import TalkDetail from '$lib/TalkDetail/index.svelte';
@@ -7,26 +34,43 @@
 	let message = '';
 	let search = '';
 
-  let talkList = [
-		{
-			id: '1',
-			title: "title",
-			timestamp: "2021/5/31",
-			message: "message",
-		},
-		{
-			id: '2',
-			title: "title2",
-			timestamp: "2021/5/31",
-			message: "message2",
-		},
-		{
-			id: '3',
-			title: "title3",
-			timestamp: "2021/5/31",
-			message: "message3",
-		},
-	];
+	export let data = {};
+
+	$: talkList = data.contents.map((talk) => {
+		const object = {
+			id: talk.id,
+			title: talk.title,
+			avatar: talk.image || '',
+			timestamp: talk.image || '',
+			message: 'messageeee',
+		}
+
+		return object;
+	})
+
+  // let talkList = [
+	// 	{
+	// 		id: '1',
+	// 		title: '経歴',
+  //     avatar: 'https://placehold.jp/150x150',
+	// 		timestamp: "2021/5/31",
+	// 		message: "学歴、職歴について",
+	// 	},
+	// 	{
+	// 		id: '2',
+	// 		title: 'タイトル',
+  //     avatar: 'https://placehold.jp/150x150',
+	// 		timestamp: "2021/5/31",
+	// 		message: "message2",
+	// 	},
+	// 	{
+	// 		id: '3',
+	// 		title: 'タイトル',
+  //     avatar: 'https://placehold.jp/150x150',
+	// 		timestamp: "2021/5/31",
+	// 		message: "message3",
+	// 	},
+	// ];
 </script>
 
 <div class="flex flex-wrap">
