@@ -13,7 +13,7 @@
 		if (resList.ok) {
 			return {
 				props: {
-					data: await resList.json()
+					dataList: await resList.json()
 				},
 			};
 		}
@@ -34,48 +34,14 @@
 	let message = '';
 	let search = '';
 
-	export let data = {};
-
-	$: talkList = data.contents.map((talk) => {
-		const object = {
-			id: talk.id,
-			title: talk.title,
-			avatar: talk.image || '',
-			timestamp: talk.image || '',
-			message: 'messageeee',
-		}
-
-		return object;
-	})
-
-  // let talkList = [
-	// 	{
-	// 		id: '1',
-	// 		title: '経歴',
-  //     avatar: 'https://placehold.jp/150x150',
-	// 		timestamp: "2021/5/31",
-	// 		message: "学歴、職歴について",
-	// 	},
-	// 	{
-	// 		id: '2',
-	// 		title: 'タイトル',
-  //     avatar: 'https://placehold.jp/150x150',
-	// 		timestamp: "2021/5/31",
-	// 		message: "message2",
-	// 	},
-	// 	{
-	// 		id: '3',
-	// 		title: 'タイトル',
-  //     avatar: 'https://placehold.jp/150x150',
-	// 		timestamp: "2021/5/31",
-	// 		message: "message3",
-	// 	},
-	// ];
+	export let dataList = {
+		contents: [],
+	};
 </script>
 
 <div class="flex flex-wrap">
 	<div class="w-full md:w-6/12">
-		<TalkList talkList={talkList} bind:search={search}  />
+		<TalkList talkList={dataList.contents} bind:search={search}  />
 	</div>
 	
 	<div class="w-full md:w-6/12">
