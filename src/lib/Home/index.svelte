@@ -28,7 +28,7 @@
 <div class="flex flex-col h-screen">
 	<main class="flex-1 overflow-auto bg-blue-100">
 		<div class="flex flex-col items-center mt-20 mb-10">
-			<img class="w-20 h-20 rounded-full m-2" src="https://placehold.jp/200x200" alt="" />
+			<img class="w-20 h-20 rounded-full m-2" src="symbol.png" alt="" />
 
 			<h1 class="text-xl">
 				Sillos Silloi

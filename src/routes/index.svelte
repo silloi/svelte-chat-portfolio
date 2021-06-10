@@ -12,11 +12,7 @@
 	<div class="w-full md:w-6/12">
 		<Home />
 	</div>
-	
-	<!-- <div class="w-full md:w-6/12">
-		<TalkList bind:search={search}  />
-	</div> -->
-	
+
 	<div class="w-full md:w-6/12">
 		<TalkDetail title={title} bind:message={message} />
 	</div>
